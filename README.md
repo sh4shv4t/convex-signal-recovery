@@ -45,9 +45,9 @@ convex-signal-recovery/
 ```
 
 ## Authors
-- Shashvat Singh (Your Name)
-- Ankan Patra (Ankan)
-- Prince Kumar (Prince)
+- Shashvat Singh 
+- Ankan Patra 
+- Prince Kumar 
 
 ## References
 - Stephen Boyd and Lieven Vandenberghe, *Convex Optimization*
