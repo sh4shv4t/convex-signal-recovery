@@ -14,17 +14,24 @@ We solve the convex program $\min_{x \in \mathbb{R}^n} \sum_i x_i$ subject to th
 The project uses CVX to implement disciplined convex programming (DCP) formulations. Each constraint regime is solved independently to compare feasibility, boundedness, and recovered signal structure.
 
 ## Results Summary
-| Case | Constraint | Objective Value | CVX Status |
-|------|------------|-----------------|-----------|
-| 1 | $A x = b$ | Run `src/main.m` | Run `src/main.m` |
-| 2 | $A x \ge b$ | Run `src/main.m` | Run `src/main.m` |
-| 3 | $A x \ge b$, $-1 \le x_i \le 1$ | Run `src/main.m` | Run `src/main.m` |
+| Case | Constraint | Objective Value | Status |
+|------|------------|-----------------|--------|
+| 1 | $A x = b$ | Run `src/main.m` or `src/main_q12.py` | See output table |
+| 2 | $A x \ge b$ | Run `src/main.m` or `src/main_q12.py` | See output table |
+| 3 | $A x \ge b$, $-1 \le x_i \le 1$ | Run `src/main.m` or `src/main_q12.py` | See output table |
 
 ## How to Run
+### MATLAB
 1. Install MATLAB R2022a+ and CVX 2.2.
 2. In MATLAB, add CVX to the path and run `cvx_setup` once.
 3. Open the project folder and add `src/` to your MATLAB path.
 4. Run `main.m` from the `src/` folder.
+
+### Python (CVXPY)
+1. Create a virtual environment: `python -m venv .venv`
+2. Activate it (PowerShell): `.\.venv\Scripts\Activate.ps1`
+3. Install dependencies: `pip install -r requirements.txt`
+4. Run: `python src/main_q12.py`
 
 ## File Structure
 ```
@@ -38,10 +45,15 @@ convex-signal-recovery/
 │   ├── solve_case2.m
 │   ├── solve_case3.m
 │   └── plot_results.m
+│   ├── generate_data.py
+│   ├── solve_q12.py
+│   ├── plot_q12.py
+│   └── main_q12.py
 ├── results/
 │   └── .gitkeep
 └── docs/
     └── report.md
+├── requirements.txt
 ```
 
 ## Authors
