@@ -1,0 +1,4 @@
+Case,Status,Objective,L1,Min,Max
+1,unbounded,-inf,nan,nan,nan
+2,unbounded,-inf,nan,nan,nan
+3,optimal,-70.97857024156345,125.47475198587978,-1.0000000000123643,0.999999999999564

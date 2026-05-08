@@ -1,3 +1,4 @@
+import csv
 import os
 
 import numpy as np
@@ -46,8 +47,32 @@ def main():
 
     project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     results_dir = os.path.join(project_root, "results")
+    os.makedirs(results_dir, exist_ok=True)
+
     output_path = plot_q12(results, results_dir)
+    summary_path = os.path.join(results_dir, "q12_summary.csv")
+    with open(summary_path, "w", newline="") as handle:
+        writer = csv.writer(handle)
+        writer.writerow(["Case", "Status", "Objective", "L1", "Min", "Max"])
+        for idx, result in enumerate(results, start=1):
+            status = result["status"]
+            obj = result["objective"]
+            x_val = result["x"]
+
+            if x_val is not None:
+                x_vec = np.asarray(x_val).reshape(-1)
+                l1 = np.sum(np.abs(x_vec))
+                x_min = x_vec.min()
+                x_max = x_vec.max()
+            else:
+                l1 = np.nan
+                x_min = np.nan
+                x_max = np.nan
+
+            writer.writerow([idx, status, obj, l1, x_min, x_max])
+
     print(f"\nSaved plot: {output_path}")
+    print(f"Saved summary: {summary_path}")
 
 
 if __name__ == "__main__":
